@@ -67,7 +67,7 @@ public class MoodleActuator {
 
     public void goToCoursePage(String course) {
         goToMyCoursesTab();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='multiline' and contains(text(),'" + course + "')]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[1]/a[1]/span[3]/span[2]"))).click();
 
     }
 

@@ -95,7 +95,8 @@ public class MoodleActuator {
         boolean flag = true;
         try {
 //        WebElement webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"yui_3_17_2_1_1673266595593_48\"]/div[2]/div/a[1]")));
-        driver.findElement(By.xpath("//*[@id=\"yui_3_17_2_1_1673266595593_48\"]/div[2]/div/a[1]"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[1]/header[1]/div[2]/h3[1]")));
+        // driver.findElement(By.xpath("\"//div[1]/header[1]/div[2]/h3[1]"));
         }
         catch (Exception e) {
             flag = false;

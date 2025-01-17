@@ -17,7 +17,7 @@ Scenario Outline: Teacher deletes a comment from the forum
     When The teacher is logged in with UserName <UserName> and Password <Password>
     And Teacher navigate to course page <CourseName>
     And Teacher navigate to forum page named <ForumName>
-    And Teacher navigate to the comment <commentName>
+    And Teacher navigate to the comment <CommentName>
     And Teacher clicks on the delete button
     And Teacher confirm the deletion by clicking on confirm
     Then The comment should be deleted from the forum

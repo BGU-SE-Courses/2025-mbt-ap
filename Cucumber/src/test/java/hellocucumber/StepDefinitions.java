@@ -83,9 +83,15 @@ public class StepDefinitions {
 
     // $$*TODO* explain what this step does$$
     @And("Teacher navigate to the comment {string}")
-    public void navigateToComment_admin(String comment) {
-        _admin.goToComment(comment);
+    public void navigateToComment_admin(String query) {
+        _admin.goToComment(query);
     }
+
+    // @When("Teacher navigate to the comment {string}")
+    // public void teacher_navigate_to_the_comment_comment_name(String comment) {
+    //     // Write code here that turns the phrase above into concrete actions
+    //     _admin.goToComment(comment);
+    // }    
 
     // $$*TODO* explain what this step does$$
     @And("Teacher clicks on the delete button")

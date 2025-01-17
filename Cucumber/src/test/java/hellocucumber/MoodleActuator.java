@@ -2,6 +2,8 @@ package hellocucumber;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +14,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class MoodleActuator {
     
@@ -66,19 +69,46 @@ public class MoodleActuator {
 
 
     public void goToCoursePage(String course) {
+        // Navigate to "My Courses" tab first
         goToMyCoursesTab();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[1]/a[1]/span[3]/span[2]"))).click();
-
+    
+        // Construct the XPath dynamically to match the course name
+        String dynamicXPath = "//div[1]/a[1]/span[3]/span[2][contains(text(),'" + course + "')]";
+    
+        // Wait for the course element to be visible and click it
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dynamicXPath))).click();
+    
+        System.out.println("Navigated to the course: " + course);
     }
 
-    public void goToForum(String forum) { //need to use string forum to navigate todo
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[1]/ul[1]/li[3]/div[1]/div[2]/ul[1]/li[1]/div[1]/div[2]/div[2]/div[1]/div[1]/a[1]"))).click();
-
+    public void goToForum(String forum) {
+        String dynamicXPath = "//a[contains(.,'" + forum + "')]";
+        List<WebElement> forumElements = driver.findElements(By.xpath(dynamicXPath));
+    
+        if (forumElements.isEmpty()) {
+            throw new NoSuchElementException("Forum not found with name: " + forum);
+        }
+    
+        for (WebElement element : forumElements) {
+            if (element.getText().contains(forum)) {
+                element.click();
+                System.out.println("Navigated to the forum: " + forum);
+                return;
+            }
+        }
+    
+        throw new NoSuchElementException("Exact forum match not found: " + forum);
     }
+    
 
-    public void goToComment(String query) {
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[1]/table[1]/tbody[1]/tr[1]/th[1]/div[1]/div[1]/a[1]"))).click();
+    public void goToComment(String comment) {
+        // Construct the dynamic XPath based on the comment query
+        String dynamicXPath = "//div[1]/table[1]/tbody[1]/tr[1]/th[1]/div[1]/div[1]/a[contains(text(),'" + comment + "')]";
+    
+        // Wait for the comment element to be visible and click it
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dynamicXPath))).click();
+    
+        System.out.println("Navigated to the comment: " + comment);
     }
 
 

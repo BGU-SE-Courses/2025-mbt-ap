@@ -25,17 +25,11 @@ public class MoodleActuator {
 
         System.setProperty(webDriver, path);
         WebDriverManager.chromedriver().setup();
-
-        // new chrome driver object
         this.driver = new ChromeDriver();
-
-        // new web driver wait -> waits until element are loaded (40 sec max)
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
-        // launch website -> localhost
         driver.get("http://localhost/");
 
-        // maximize the window - some web apps look different in different sizes
         driver.manage().window().maximize();
         System.out.println("Driver setup finished for - " + driver.getTitle());
     }
@@ -46,21 +40,17 @@ public class MoodleActuator {
     }
 
     public void enterLoginInfo(String userName, String password) {
-        // locate the username input box and enter username
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='username']"))).clear();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='username']"))).sendKeys(userName);
 
-        // locate the password input box and enter password
-
-         WebElement webElement = driver.findElement(By.xpath("//*[@id='password']"));
-         webElement.sendKeys(password);
-
-        // locate Log in button and press
+        WebElement webElement = driver.findElement(By.xpath("//*[@id='password']"));
+        webElement.sendKeys(password);
 
         driver.findElement(By.id("loginbtn")).click();
 
     }
+    
     public void goToMyCoursesTab(){
 
         WebElement myCoursesTab = driver.findElement(By.xpath("//*[contains(text(),'My courses') and @role='menuitem']"));
@@ -69,13 +59,10 @@ public class MoodleActuator {
 
 
     public void goToCoursePage(String course) {
-        // Navigate to "My Courses" tab first
         goToMyCoursesTab();
     
-        // Construct the XPath dynamically to match the course name
         String dynamicXPath = "//div[1]/a[1]/span[3]/span[2][contains(text(),'" + course + "')]";
     
-        // Wait for the course element to be visible and click it
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dynamicXPath))).click();
     
         System.out.println("Navigated to the course: " + course);
@@ -102,10 +89,8 @@ public class MoodleActuator {
     
 
     public void goToComment(String comment) {
-        // Construct the dynamic XPath based on the comment query
         String dynamicXPath = "//div[1]/table[1]/tbody[1]/tr[1]/th[1]/div[1]/div[1]/a[contains(text(),'" + comment + "')]";
     
-        // Wait for the comment element to be visible and click it
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dynamicXPath))).click();
     
         System.out.println("Navigated to the comment: " + comment);
@@ -120,13 +105,10 @@ public class MoodleActuator {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[2]/form[1]/button[1]"))).click();
     }
 
-    public void checkResult() { //todo path
-//        boolean flag = true;
+    public void checkResult() { 
         boolean flag = true;
         try {
-//        WebElement webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"yui_3_17_2_1_1673266595593_48\"]/div[2]/div/a[1]")));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[1]/header[1]/div[2]/h3[1]")));
-        // driver.findElement(By.xpath("\"//div[1]/header[1]/div[2]/h3[1]"));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[1]/header[1]/div[2]/h3[1]")));
         }
         catch (Exception e) {
             flag = false;
@@ -138,7 +120,6 @@ public class MoodleActuator {
     public void checkResultDelete() {
         boolean flag = true;
         try{
-//           driver.findElement(By.xpath( "//*[@id=\"user-notifications\"]div"));
             driver.findElement(By.linkText("abcd"));
             flag = false;
         }catch (Exception e){

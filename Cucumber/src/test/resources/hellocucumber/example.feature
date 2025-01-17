@@ -9,7 +9,7 @@ Scenario Outline: Student views a comment on the forum
     Then The student should see the comment content
     Examples:
       | UserName   | Password    | CourseName    | ForumName        | CommentName                        |
-      | "nofar"    | "Nofar123!" | "Intel"       | "no more coffee" | "why there is no coffee anymore?!" |
+      | "student"    | "Aa12345!" | "Intel"       | "no more coffee" | "why there is no coffee anymore?!" |
 
 
 Scenario Outline: Teacher deletes a comment from the forum

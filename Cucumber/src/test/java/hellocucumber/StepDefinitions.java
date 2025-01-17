@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions.*;
 
 public class StepDefinitions {
-    private String path = "C:\\Users\\malul\\Downloads\\chromedriver.exe\\";
+    private String path = "C:\\Users\\malul\\OneDrive\\שולחן העבודה\\software quality\\2025-mbt-ap\\Selenium\\chromedriver.exe\\";
     private  static List<MoodleActuator> _openMoodle;
     private static  MoodleActuator _student;
     private static  MoodleActuator _admin;

@@ -2,7 +2,7 @@
 
 bthread('Student view comment in forum successfully', function () {
   sync({waitFor:Event("End(navigate_to_comment)")})
-  interrupt( Event("Middle(delete_commment)"),function(){
+  interrupt( Event("Middle(delete_comment)"),function(){
       let s = new SeleniumSession().start('http://localhost')
       navigate_to_login(s);
       enter_details(s, {UserName: 'student', Password: 'Aa12345!'});

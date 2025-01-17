@@ -7,7 +7,7 @@ function navigate_to_login(session) {
 }
 
 
-function enter_details(session){
+function enter_details(session, e){
   sync({request: Event("Start(enter_details)")});
   session.writeText("//*[@id='username']", e.UserName);
   session.writeText("//*[@id='password']", e.Password);
@@ -16,7 +16,7 @@ function enter_details(session){
 }
 
 
-function navigate_to_coursePage(session){
+function navigate_to_coursePage(session, e){
   sync({request: Event("Start(navigate_to_coursePage)")});
   session.click("//*[contains(text(),'My courses') and @role='menuitem']") //click on my courses
   session.click("//div[1]/a[1]/span[3]/span[2][contains(text(),'" + e.courseName + "')]") //click on course name
@@ -24,13 +24,13 @@ function navigate_to_coursePage(session){
 }
 
 
-function navigate_to_forum(session){
+function navigate_to_forum(session, e){
   sync({request: Event("Start(navigate_to_forum)")});
   session.click("//a[contains(.,'" + e.courseName+ "')]")
   sync({request: Event("End(navigate_to_forum)")});
 }
 
-function navigate_to_comment(session){
+function navigate_to_comment(session, e){
   sync({request: Event("Start(navigate_to_comment)")});
   session.click("//div[1]/table[1]/tbody[1]/tr[1]/th[1]/div[1]/div[1]/a[contains(text(),'" + e.commentName + "')]")
   sync({request: Event("End(navigate_to_comment)")});

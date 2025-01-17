@@ -62,13 +62,13 @@ public class MoodleActuator {
     }
 
 
-    public void goToCoursePage(String COURSE_NAME) {
+    public void goToCoursePage(String course) {
         goToMyCoursesTab();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='multiline' and contains(text(),'" + COURSE_NAME + "')]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='multiline' and contains(text(),'" + course + "')]"))).click();
 
     }
 
-    public void goToForum() {
+    public void goToForum(String forum) { //need to use string forum to navigate todo
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"module-1\"]/div/div[1]/div/div[1]/div/div[2]/div[2]"))).click();
 
     }
@@ -87,7 +87,7 @@ public class MoodleActuator {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[2]/form[1]/button[1]"))).click();
     }
 
-    public void checkResult() {
+    public void checkResult() { //todo path
 //        boolean flag = true;
         boolean flag = true;
         try {

@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import java.time.Duration;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class MoodleActuator {
     public void initSession(String webDriver, String path) {
 
         System.setProperty(webDriver, path);
+        WebDriverManager.chromedriver().setup();
 
         // new chrome driver object
         this.driver = new ChromeDriver();

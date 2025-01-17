@@ -1,19 +1,25 @@
 /* @provengo summon selenium */
 
-/**
- * This story opens a new browser window, goes to google.com, and searches for "Pizza".
- */
-bthread('Search', function () {
-  let s = new SeleniumSession('search').start(URL)
-  composeQuery(s, { text: 'Pizza' })
-  startSearch(s)
+bthread('Student view comment in forum successfully', function () {
+  sync({waitFor:Event("End(navigate_to_comment)")})
+  interrupt( Event("Middle(delete_commment)"),function(){
+      let s = new SeleniumSession().start('http://localhost')
+      navigate_to_login(s);
+      enter_details(s, {UserName: 'student', Password: 'Aa12345!'});
+      navigate_to_coursePage(s, {courseName: 'Intel'});
+      navigate_to_forum(s, {forumName:'no more coffee'});
+      navigate_to_comment(s, {commentName:'why there is no coffee anymore?!'})
+      
+  }) 
 })
 
-/**
- * This story opens a new browser window, goes to google.com, and searches for "Pasta" using the "I Feel Lucky" feature.
- */
-bthread('Feeling lucky', function () {
-  let s = new SeleniumSession('lucky').start(URL)
-  composeQuery(s, { text: 'Pasta' })
-  feelLucky(s)
-})
+bthread('Teacher delete comment in forum successfully', function () {
+  sync({waitFor:Event("End(navigate_to_comment)")})
+      let s = new SeleniumSession().start('http://localhost')
+      navigate_to_login(s);
+      enter_details(s, {UserName: 'admin', Password: 'Aa12345!'});
+      navigate_to_coursePage(s, {courseName: 'Intel'});
+      navigate_to_forum(s, {forumName:'no more coffee'});
+      navigate_to_comment(s, {commentName:'why there is no coffee anymore?!'})
+      delete_comment(s);
+}) 

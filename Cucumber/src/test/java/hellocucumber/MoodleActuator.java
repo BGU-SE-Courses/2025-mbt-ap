@@ -72,13 +72,13 @@ public class MoodleActuator {
     }
 
     public void goToForum(String forum) { //need to use string forum to navigate todo
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"module-1\"]/div/div[1]/div/div[1]/div/div[2]/div[2]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[1]/ul[1]/li[3]/div[1]/div[2]/ul[1]/li[1]/div[1]/div[2]/div[2]/div[1]/div[1]/a[1]"))).click();
 
     }
 
     public void goToComment(String query) {
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"module-1\"]/th[1]/div[1]/div[1]/a[1]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[1]/table[1]/tbody[1]/tr[1]/th[1]/div[1]/div[1]/a[1]"))).click();
     }
 
 

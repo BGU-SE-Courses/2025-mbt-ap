@@ -32,7 +32,7 @@ function navigate_to_forum(session, e){
 
 function navigate_to_comment(session, e){
   sync({request: Event("Start(navigate_to_comment)")});
-  session.click("//div[1]/table[1]/tbody[1]/tr[1]/th[1]/div[1]/div[1]/a[contains(text(),'" + e.commentName + "')]")
+  session.click( "//div[1]/table[1]/tbody[1]/tr[1]/th[1]/div[1]/div[1]/a[contains(text(),'" + e.commentName + "')]")
   sync({request: Event("End(navigate_to_comment)")});
 }
 

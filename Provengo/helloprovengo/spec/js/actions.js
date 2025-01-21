@@ -26,7 +26,7 @@ function navigate_to_coursePage(session, e){
 
 function navigate_to_forum(session, e){
   sync({request: Event("Start(navigate_to_forum)")});
-  session.click("//a[contains(.,'" + e.courseName+ "')]")
+  session.click("//a[contains(.,'" + e.forumName + "')]")
   sync({request: Event("End(navigate_to_forum)")});
 }
 

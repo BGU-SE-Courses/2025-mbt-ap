@@ -9,9 +9,6 @@ bthread('Student view comment in forum successfully', function () {
         enter_details(s, {UserName: 'student', Password: 'Aa12345!'});
         navigate_to_coursePage(s, {courseName: 'Intel'});
         navigate_to_forum(s, {forumName:'no more coffee'});
-        // Block specifically the navigate_to_comment_student action if the comment is deleted
-        sync({ waitFor: Event("Start(navigate_to_comment_student)"), block: Event("Start(delete_comment)") });
-
         navigate_to_comment_student(s, { commentName: 'why there is no coffee anymore?!' });
       }
 })
@@ -43,13 +40,9 @@ bthread('Make sure comment exists in the forum', function () {
 })
 
 
-// bthread('Student view comment in forum successfully', function () {
-//   sync({request: Event({name: "Start(navigate_to_login)"})});
-//   let s = new SeleniumSession().start('http://localhost/')
-//   navigate_to_login(s);
-//   sync({request:Event("End(navigate_to_login)")})
-
-// })
+bthread('Navigate before delete', function () {
+  sync({waitFor: Event("End(navigate_to_comment_student)"), block: Event("Start(delete_comment)")});
+})
 
 // bthread("Student view comment in forum successfully", function() {
 //   let s = new SeleniumSession("http://localhost/")

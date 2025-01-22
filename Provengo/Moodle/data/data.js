@@ -1,15 +1,23 @@
-/*
- *  This is a good place to put common test data, project-wide constants, etc.
- */
-
-const URL = 'https://www.google.com/?hl=en';
-
-const xpaths = {
-  searchWindow: {
-    searchInput: '//textarea[@aria-label="Search"]',
-    searchButton: '//input[@aria-label="Google Search"]',
-    feelingLuckyButton: '//input[@aria-label="I\'m Feeling Lucky"]'
-  }
-}
-
-const searchTerm = 'pizza'
+const paths = {
+  loginPage: {
+    loginLink: "//*[@id='usernavigation']/div/div/span/a",
+    usernameInput: "//*[@id='username']",
+    passwordInput: "//*[@id='password']",
+    submitButton: "//*[@id='loginbtn']",
+  },
+  coursePage: {
+    myCoursesLink: "//*[contains(text(),'My courses') and @role='menuitem']",
+    courseLink: "//div[1]/a[1]/span[3]/span[2][contains(text(),'${courseName}')]",
+  },
+  forumPage: {
+    forumLink: "//a[contains(.,'${forumName}')]",
+    commentLink: "//div[1]/table[1]/tbody[1]/tr[1]/th[1]/div[1]/div[1]/a[contains(text(),'${commentName}')]",
+    deleteButton: "//div[1]/div[2]/div[2]/div[1]/a[3]",
+    confirmDeleteButton: "//div[2]/form[1]/button[1]",
+    addCommentButton: "//div[1]/div[1]/div[2]/a[1]",
+    navToSubjectField: "//div[2]/div[2]/input[1]",
+    subjectField: "//*[@id='id_subject']",
+    messageField: "//*[@id='id_message_ifr']",
+    submitButton: "//*[@id='id_submitbutton']",
+  },
+};

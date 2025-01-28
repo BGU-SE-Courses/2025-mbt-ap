@@ -44,7 +44,7 @@ function navigate_to_comment_teacher(session, e){
 
 function delete_comment(session){
   sync({request: Event("Start(delete_comment)")});
-  session.click(paths.forumPage.deleteButten) //delete button
+  session.click(paths.forumPage.deleteButton) //delete button
   session.click(paths.forumPage.confirmDeleteButton)
   sync({request: Event("End(delete_comment)")});
 }

@@ -37,11 +37,11 @@ See the last two lessons of the [Provengo Course](https://provengo.github.io/Cou
 1. We implemented a domain-specific ranking function at the beginning of the [ensemble-code.js](Moodle/meta-spec/ensemble-code.js) file and updated the `rankingFunction` to use our function. We added a documentation comment that explains our function.
 2. We sampled the state space of the system using the following command that created a [samples.json](Moodle/products/run-source/samples.json) file:
 ```shell
-provengo sample --overwrite --size 10 Moodle
+provengo sample --overwrite --size 20 Moodle
 ```
 3. Given this sample, we created an ensemble (test suite) using the following commands that created an [ensemble.json](Moodle/products/run-source/ensemble.json) file:
 ```shell
-provengo ensemble --size 5 Moodle
+provengo ensemble --size 10 Moodle
 ```
 4. We repeated the last two steps, changing the two size parameters, until we were satisfied with the grade of the generated test suites.
 5. We copied the [ensemble.json](Moodle/products/run-source/ensemble.json) file to [domain-specific.json](submission-files/domain-specific.json).

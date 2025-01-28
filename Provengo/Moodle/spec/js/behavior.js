@@ -39,10 +39,23 @@ bthread('Make sure comment exists in the forum', function () {
       }
 })
 
+bthread("Mark Goals", function(){
+  let e = sync({waitFor: goalsSet})
+  let goals = []
+  while(e.name !== "End(delete_comment)"){
+      goals.push(e.name)
+      e = sync({waitFor: goalsSet})
+  }
+  goals.push(e.name)
 
-bthread('Navigate before delete', function () {
-  sync({waitFor: Event("End(navigate_to_comment_student)"), block: Event("Start(delete_comment)")});
+  let goalsStr = goals.join(",")
+      sync({request: Ctrl.markEvent(`Goal:(${goalsStr})`)})
 })
+
+
+// bthread('Navigate before delete', function () {
+//   sync({waitFor: Event("End(navigate_to_comment_student)"), block: Event("Start(delete_comment)")});
+// })
 
 // bthread("Student view comment in forum successfully", function() {
 //   let s = new SeleniumSession("http://localhost/")

@@ -67,4 +67,9 @@ function comment_added(session, e){
   sync({request: Event("End(comment_added)")});
 }
 
+const goalsSet =[
+  Event("End(navigate_to_comment_student)"),
+  Event("End(delete_comment)")
+]
+
 
